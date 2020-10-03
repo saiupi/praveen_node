@@ -1,0 +1,218 @@
+<br>
+<div class="card-body  ">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm">
+                <label class="input-group">Name</label>
+
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <input type="text" formControlName="name" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label class="input-group">Father Name</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <input type="text" formControlName="father_name" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.father_name.errors }" />
+                    <div *ngIf="submitted && f.father_name.errors" class="invalid-feedback">
+                        <div *ngIf="f.father_name.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label class="input-group">Mother Name</label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <input type="text" formControlName="mother_name" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.mother_name.errors }" />
+                    <div *ngIf="submitted && f.mother_name.errors" class="invalid-feedback">
+                        <div *ngIf="f.mother_name.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+
+        </div><br>
+
+        <div class="row">
+            <div class="col-sm">
+                <label class="input-group">Date of Birthday</label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <input type="date" formControlName="date_of_birtday" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.date_of_birtday.errors }" />
+                    <div *ngIf="submitted && f.date_of_birtday.errors" class="invalid-feedback">
+                        <div *ngIf="f.date_of_birtday.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label class="input-group">Mobile Number</label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <input type="text" formControlName="mobile_number" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }" />
+                    <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobile_number.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label class="input-group">Date of Join</label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <input type="date" formControlName="date_of_join" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.date_of_join.errors }" />
+                    <div *ngIf="submitted && f.date_of_join.errors" class="invalid-feedback">
+                        <div *ngIf="f.date_of_join.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm">
+                <label class="input-group">Select Gender</label>
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                    </div>
+                    <select class="form-control" formControlName="gender" id="exampleFormControlSelect2"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                        <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                            <div *ngIf="f.gender.errors.required">First Name is required</div>
+                        </div>
+                        <option selected>select option</option>
+                        <option value="male">male</option>
+                        <option value="fe-male">fe-male</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm">
+
+            </div>
+            <div class="col-sm">
+
+            </div>
+
+        </div><br>
+        <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>
+<br>
+<table class="table table-striped" [svData]="data" #sv="svDataTable" [svRowsOnPage]="5"  svSortBy="title"
+    svSortOrder="asc">
+    <thead>
+        <tr>
+           
+            <th><sv-default-sorter by="id">id</sv-default-sorter></th>
+            <th><sv-default-sorter by="title">title</sv-default-sorter>
+            </th>
+            <th>body</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of sv.data;">
+         
+            <td>{{s.id}}</td>
+            <td>{{s.title}}</td>
+            <td>{{s.body}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div>
+    <div class="card shadow bg-white rounded">
+        <h5 class="card-header text-success">Student Details</h5>
+        <div class="card-body ">
+
+            <div class="form-row p-1">
+                <div class="col-5 text-info">
+                    <h6>All worker in/out time data is available here</h6>
+                </div>
+
+                <div class="col-4">
+
+                </div>
+
+                <div class="col-3">
+                    <input type="text" class="form-control  float-right" placeholder="Search">
+
+                </div>
+            </div><br>
+            <div class="table-responsive">
+                <table class="table table-hover  table-bordered ">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">id</th>
+                            <th scope="col">title</th>
+                            <th scope="col">body</th>
+                            <th scope="col">Date of Birthday</th>
+                            <th scope="col">Mobile Number</th>
+                            <th scope="col">Date of Join</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Action</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let s of studentDetails; let i = index;">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{s.id}}</td>
+                            <td>{{s.title}}</td>
+                            <td>{{s.body}}</td>
+                            <td>{{s.mobile_number}}</td>
+                            <td>{{s.date_of_birtday}}</td>
+                            <td>{{s.date_of_join}}</td>
+                            <td>{{s.gender}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-info">Edit</button>&nbsp;&nbsp;
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <pagination-controls (pageChange)="p = $event" class="pagination pg-blue justify-content-end ">
+        </pagination-controls>
+
+    </div>
+
+
+</div>
